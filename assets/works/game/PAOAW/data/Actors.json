@@ -1,0 +1,15 @@
+[
+null,
+{"id":1,"battlerName":"Dhenias","characterIndex":0,"characterName":"Dhenias","classId":16,"equips":[0,0,0,0,0],"faceIndex":4,"faceName":"Dhenias","traits":[],"initialLevel":1,"maxLevel":99,"name":"Dhenias","nickname":"","note":"","profile":""},
+{"id":2,"battlerName":"Fathir","characterIndex":0,"characterName":"Fathir","classId":16,"equips":[0,0,0,0,0],"faceIndex":2,"faceName":"Fathir","traits":[],"initialLevel":1,"maxLevel":99,"name":"Fathir","nickname":"","note":"","profile":""},
+{"id":3,"battlerName":"Reivan","characterIndex":0,"characterName":"Reivan","classId":16,"equips":[0,0,0,0,0],"faceIndex":2,"faceName":"Reivan","traits":[],"initialLevel":1,"maxLevel":99,"name":"Reivan","nickname":"","note":"","profile":""},
+{"id":4,"battlerName":"Aulia","characterIndex":0,"characterName":"Aulia","classId":16,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"Aulia","traits":[],"initialLevel":1,"maxLevel":99,"name":"Aulia","nickname":"","note":"","profile":""},
+{"id":5,"battlerName":"Actor3_5","characterIndex":4,"characterName":"Actor3","classId":5,"equips":[21,0,0,15,0],"faceIndex":4,"faceName":"Actor3","traits":[],"initialLevel":3,"maxLevel":99,"name":"Viendt (Petualang)","nickname":"","note":"","profile":"Seorang Pria yang bernasib buruk."},
+{"id":6,"battlerName":"Michael","characterIndex":0,"characterName":"Michael","classId":16,"equips":[0,0,0,0,0],"faceIndex":2,"faceName":"Michael","traits":[],"initialLevel":1,"maxLevel":99,"name":"Michael","nickname":"","note":"","profile":""},
+{"id":7,"battlerName":"DemonLordMichael","characterIndex":1,"characterName":"Michael","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"MichaelAfter","nickname":"","note":"","profile":""},
+{"id":8,"battlerName":"Drone","characterIndex":0,"characterName":"","classId":7,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"Drones","nickname":"","note":"","profile":""},
+{"id":9,"battlerName":"goblin_sv_1","characterIndex":0,"characterName":"goblin_bases","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"Forest Goblin","nickname":"","note":"","profile":""},
+{"id":10,"battlerName":"goblin_sv_2","characterIndex":1,"characterName":"goblin_bases","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"Goblin","nickname":"","note":"","profile":""},
+{"id":11,"battlerName":"","characterIndex":2,"characterName":"SF_Monster","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"Dark Demon","nickname":"","note":"","profile":""},
+{"id":12,"battlerName":"Evil7","characterIndex":6,"characterName":"Evil","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"General One","nickname":"","note":"","profile":""}
+]

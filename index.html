@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Denya Sonata — Portfolio</title>
+<link rel="icon" href="assets/hero/small-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<!-- BOOT SCREEN -->
+<div id="boot-screen">
+  <div class="boot-content">
+    <div class="boot-logo">DS</div>
+    <div class="boot-text">
+      <div class="boot-line" data-delay="0">DENYA'S PORTFOLIO v1.0</div>
+      <div class="boot-line" data-delay="300">Initializing portfolio...</div>
+      <div class="boot-line" data-delay="1000">Loading assets... <span class="ok">[OK]</span></div>
+      <div class="boot-line" data-delay="1900">Loading gallery... <span class="ok">[OK]</span></div>
+      <div class="boot-line" data-delay="3000">Mounting animations... <span class="ok">[OK]</span></div>
+      <div class="boot-line" data-delay="3600">Welcome, visitor.</div>
+    </div>
+    <div class="boot-progress-wrap">
+      <div class="boot-progress-bar" id="boot-bar"></div>
+    </div>
+    <div class="boot-skip" id="boot-skip">[ PRESS ANY KEY TO CONTINUE ]</div>
+  </div>
+</div>
+
+<!-- MAIN SITE -->
+<div id="main-site" class="hidden">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <span class="pixel-bracket">[</span>
+      <span class="nav-name">DENYA SONATA</span>
+      <span class="pixel-bracket">]</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about" class="nav-link">ABOUT</a>
+      <a href="#works" class="nav-link">WORKS</a>
+      <a href="#animations" class="nav-link">ANIMATIONS</a>
+      <a href="#collab" class="nav-link">COLLAB</a>
+      <a href="#contact" class="nav-link">CONTACT</a>
+    </div>
+    <div class="nav-status">
+      <span class="status-dot"></span>
+      <span class="status-text">ONLINE</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag">&gt; ARTIST_PORTFOLIO.sh</div>
+      <h1 class="hero-title">
+        <span class="title-line">DENYA</span>
+        <span class="title-line accent">SONATA</span>
+      </h1>
+      <p class="hero-sub">Illustrator · Animator · World-Builder</p>
+      <div class="hero-desc">
+        <span class="cursor-prefix">&gt;&gt;</span>
+        <span id="hero-typewriter"></span><span class="blink-cursor">_</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#works" class="btn btn-primary">VIEW WORKS</a>
+        <a href="#contact" class="btn btn-secondary">CONTACT</a>
+      </div>
+    </div>
+    <div class="hero-deco">
+      <div class="deco-frame" id="deco-frame">
+        <div class="deco-inner" id="deco-inner">
+          <img src="assets/hero/big-icon.png" alt="Profile Image" class="hero-img" id="deco-img">
+
+        </div>
+        <div class="deco-label" id="deco-label">ENVYFORYOUU.PNG</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <span class="section-tag">// ABOUT</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="terminal-box">
+          <div class="terminal-topbar">
+            <span class="tb-dot red"></span>
+            <span class="tb-dot yellow"></span>
+            <span class="tb-dot green"></span>
+            <span class="tb-title">about.txt</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="t-label">NAME:</span> Denya Sonata</p>
+            <p><span class="t-label">ROLE:</span> Digital Artist & Animator</p>
+            <p><span class="t-label">FOCUS:</span> Character Design, OC Art, Animation</p>
+            <p><span class="t-label">TOOLS:</span> Digital Illustration, Frame-by-Frame Animation</p>
+            <br>
+            <p class="t-desc">An artist who builds worlds one frame at a time. Specializing in original characters, expressive illustrations, and fluid animations. Every piece tells a story.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">YEARS ACTIVE</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">ILLUSTRATIONS</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">ANIMATIONS</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">IDEAS PENDING</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS - DRAWINGS -->
+  <section class="section" id="works">
+    <div class="section-header">
+      <span class="section-tag">// ILLUSTRATIONS</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">ALL</button>
+      <button class="filter-btn" data-filter="oc">OC</button>
+      <button class="filter-btn" data-filter="fanart">FANART</button>
+      <button class="filter-btn" data-filter="commission">COMMISSION</button>
+    </div>
+
+    <div class="gallery-grid" id="gallery">
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/Denya - knight.png" alt="Denya Knight" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">DENYA — KNIGHT</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Denya — Knight</span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/Denya - shall we dance.png" alt="Denya Shall We Dance" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">DENYA — SHALL WE DANCE</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Denya — Shall We Dance</span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/Denya Long Hair - School.png" alt="Denya School" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">DENYA — SCHOOL</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Denya Long Hair — School</span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/Denya - zombie.png" alt="Denya Zombie" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">DENYA — ZOMBIE</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Denya — Zombie</span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/denya knight 5 views.png" alt="Denya Knight 5 Views" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">DENYA KNIGHT — 5 VIEWS</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Denya Knight — 5 Views</span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/Enya.png" alt="Enya" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">ENYA</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Enya</span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/Random Doodle - 1.png" alt="Random Doodle 1" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">RANDOM DOODLE #1</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Random Doodle #1</span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/Random Doodle - 2.png" alt="Random Doodle 2" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">RANDOM DOODLE #2</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Random Doodle #2</span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="oc">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/oc/denya - base @oohsan_rain.png" alt="Denya Base" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">DENYA — BASE</div>
+            <div class="overlay-tag">OC</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Denya — Base <span class="credit">base @oohsan_rain</span></span>
+          <span class="meta-cat cat-oc">OC</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="fanart">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/fanart/rei - fanart.png" alt="Rei Fanart" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">REI — FANART</div>
+            <div class="overlay-tag">FANART</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Rei — Fanart</span>
+          <span class="meta-cat cat-fanart">FANART</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="fanart">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/fanart/reimi - weddingdress.jpg" alt="Reimi Wedding Dress" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">REIMI — WEDDING DRESS</div>
+            <div class="overlay-tag">FANART</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Reimi — Wedding Dress</span>
+          <span class="meta-cat cat-fanart">FANART</span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="commission">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/self/drawings/commis/Kyrell.png" alt="Kyrell Commission" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">KYRELL — COMMISSION</div>
+            <div class="overlay-tag">COMM</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Kyrell</span>
+          <span class="meta-cat cat-comm">COMM</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ANIMATIONS -->
+  <section class="section" id="animations">
+    <div class="section-header">
+      <span class="section-tag">// ANIMATIONS</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="anim-tabs">
+      <button class="anim-tab active" data-tab="basics">BASICS</button>
+      <button class="anim-tab" data-tab="oc">OC ANIMATIONS</button>
+    </div>
+
+    <div class="anim-grid" id="anim-basics">
+      <div class="anim-card">
+        <div class="anim-preview">
+          <video src="assets/works/self/animations/basics/Walk Cycle.mp4" loop muted playsinline preload="none" class="anim-video"></video>
+        </div>
+        <div class="anim-info">
+          <div class="anim-title">WALK CYCLE</div>
+          <div class="anim-tag">BASICS</div>
+        </div>
+      </div>
+
+      <div class="anim-card">
+        <div class="anim-preview">
+          <video src="assets/works/self/animations/basics/Angkat.mp4" loop muted playsinline preload="none" class="anim-video"></video>
+        </div>
+        <div class="anim-info">
+          <div class="anim-title">LIFT</div>
+          <div class="anim-tag">BASICS</div>
+        </div>
+      </div>
+
+      <div class="anim-card">
+        <div class="anim-preview">
+          <video src="assets/works/self/animations/basics/Dorong.mp4" loop muted playsinline preload="none" class="anim-video"></video>
+        </div>
+        <div class="anim-info">
+          <div class="anim-title">PUSH</div>
+          <div class="anim-tag">BASICS</div>
+        </div>
+      </div>
+
+      <div class="anim-card">
+        <div class="anim-preview">
+          <video src="assets/works/self/animations/basics/Lempar.mp4" loop muted playsinline preload="none" class="anim-video"></video>
+        </div>
+        <div class="anim-info">
+          <div class="anim-title">THROW</div>
+          <div class="anim-tag">BASICS</div>
+        </div>
+      </div>
+
+      <div class="anim-card">
+        <div class="anim-preview">
+          <video src="assets/works/self/animations/basics/Tarik.mp4" loop muted playsinline preload="none" class="anim-video"></video>
+        </div>
+        <div class="anim-info">
+          <div class="anim-title">PULL</div>
+          <div class="anim-tag">BASICS</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="anim-grid hidden" id="anim-oc">
+      <div class="anim-card wide">
+        <div class="anim-preview">
+          <video src="assets/works/self/animations/oc/3nya - nasty song trend.mp4" loop muted playsinline preload="none" class="anim-video"></video>
+        </div>
+        <div class="anim-info">
+          <div class="anim-title">3NYA — NASTY SONG TREND</div>
+          <div class="anim-tag">OC</div>
+        </div>
+      </div>
+
+      <div class="anim-card wide">
+        <div class="anim-preview">
+          <video src="assets/works/self/animations/oc/First Look vs Last Look.mp4" loop muted playsinline preload="none" class="anim-video"></video>
+        </div>
+        <div class="anim-info">
+          <div class="anim-title">FIRST LOOK VS LAST LOOK</div>
+          <div class="anim-tag">OC</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLAB -->
+  <section class="section" id="collab">
+    <div class="section-header">
+      <span class="section-tag">// COLLABORATIONS</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="collab-grid">
+      <div class="collab-card">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/collab/drawings/alien - collab with rei.png" alt="Alien collab with Rei" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">ALIEN — COLLAB W/ REI</div>
+            <div class="overlay-tag">COLLAB</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Alien</span>
+          <span class="meta-sub">collab with rei</span>
+        </div>
+      </div>
+
+      <div class="collab-card">
+        <div class="gallery-img-wrap">
+          <img src="assets/works/collab/drawings/collab with vyeranie - base@oohsan_rain.png" alt="Collab with Vyeranie" loading="lazy" onerror="this.src='';this.parentElement.classList.add('img-error')">
+          <div class="gallery-overlay">
+            <div class="overlay-title">COLLAB W/ VYERANIE</div>
+            <div class="overlay-tag">COLLAB</div>
+          </div>
+        </div>
+        <div class="gallery-meta">
+          <span class="meta-title">Collab with Vyeranie</span>
+          <span class="meta-sub">base @oohsan_rain</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-header">
+      <span class="section-tag">// CONTACT</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-wrap">
+      <div class="terminal-box contact-terminal">
+        <div class="terminal-topbar">
+          <span class="tb-dot red"></span>
+          <span class="tb-dot yellow"></span>
+          <span class="tb-dot green"></span>
+          <span class="tb-title">contact.exe</span>
+        </div>
+        <div class="terminal-body">
+          <p>&gt; Want to commission a piece?</p>
+          <p>&gt; Have a collab in mind?</p>
+          <p>&gt; Just want to say hi?</p>
+          <br>
+          <p class="t-desc">Send a message and I'll get back to you.</p>
+          <br>
+          <div class="contact-links">
+            <a href="https://x.com/denyasonata" target="_blank" class="contact-link">[ TWITTER / X ]</a>
+            <a href="https://www.instagram.com/dhenyash" target="_blank" class="contact-link">[ INSTAGRAM ]</a>
+            <a href="mailto:dhenyashu@gmail.com" target="_blank" class="contact-link">[ EMAIL ]</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">
+      <span class="pixel-bracket">[</span> DENYA SONATA <span class="pixel-bracket">]</span>
+    </div>
+    <div class="footer-mid">All art © Denya Sonata. Do not repost without credit.</div>
+    <div class="footer-right">
+      <span class="status-dot"></span> SYSTEM ONLINE
+    </div>
+  </footer>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox hidden">
+  <div class="lightbox-bg" id="lb-bg"></div>
+  <div class="lightbox-content">
+    <img id="lb-img" src="" alt="">
+    <div class="lb-close" id="lb-close">[ CLOSE ]</div>
+    <div class="lb-label" id="lb-label"></div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
