@@ -918,6 +918,13 @@ img, video {
   font-size: 10px;
 }
 
+.footer-license {
+  color: var(--gray);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.footer-license:hover { color: var(--green); }
+
 /* ========== LIGHTBOX ========== */
 .lightbox {
   position: fixed;
