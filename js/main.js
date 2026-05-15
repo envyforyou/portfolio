@@ -68,6 +68,7 @@ function initSite() {
   initFilter();
   initSteamViewer();
   initLightbox();
+  initLoadingIndicators();
   initProtection();
   initScrollReveal();
   initDecoCycler();
@@ -116,6 +117,38 @@ function initProtection() {
 
   document.querySelectorAll('img, video').forEach(media => {
     media.draggable = false;
+  });
+}
+
+function initLoadingIndicators() {
+  document.querySelectorAll('.gallery-img-wrap img').forEach(img => {
+    const wrap = img.closest('.gallery-img-wrap');
+    if (!wrap) return;
+
+    const clearLoading = () => wrap.classList.remove('loading');
+    if (img.complete && img.naturalWidth !== 0) {
+      clearLoading();
+      return;
+    }
+
+    wrap.classList.add('loading');
+    img.addEventListener('load', clearLoading, { once: true, passive: true });
+    img.addEventListener('error', () => {
+      wrap.classList.remove('loading');
+      wrap.classList.add('img-error');
+    }, { once: true, passive: true });
+  });
+
+  document.querySelectorAll('.anim-preview video').forEach(video => {
+    const wrap = video.closest('.anim-preview');
+    if (!wrap) return;
+
+    const clearLoading = () => wrap.classList.remove('loading');
+    wrap.classList.add('loading');
+    video.addEventListener('loadstart', () => wrap.classList.add('loading'), { passive: true });
+    video.addEventListener('loadeddata', clearLoading, { once: true, passive: true });
+    video.addEventListener('error', clearLoading, { once: true, passive: true });
+    if (video.readyState >= 3) clearLoading();
   });
 }
 
@@ -213,7 +246,8 @@ function initSteamViewer() {
 let imgItems = [], imgIndex = 0;
 
 // Cached references — set once, reused forever
-let svBigImg, svImgLabel, svStripImg;
+let svBigImg, svImgLabel, svStripImg, svPreviewWrap;
+let svVideoPreviewWrap;
 
 function buildImageViewer() {
   const gallerySection = document.getElementById('works');
@@ -243,9 +277,10 @@ function buildImageViewer() {
   if (grid) grid.style.display = 'none';
 
   // Cache DOM refs
-  svBigImg    = document.getElementById('sv-big-img');
-  svImgLabel  = document.getElementById('sv-img-label');
-  svStripImg  = document.getElementById('sv-strip-img');
+  svBigImg       = document.getElementById('sv-big-img');
+  svImgLabel     = document.getElementById('sv-img-label');
+  svStripImg     = document.getElementById('sv-strip-img');
+  svPreviewWrap  = viewer.querySelector('.sv-preview-wrap');
 
   // Arrow navigation
   document.getElementById('sv-prev-img').addEventListener('click', () => {
@@ -309,15 +344,26 @@ function setImgIndex(i, thumbScroll) {
 
   // Crossfade: fade out → swap src → fade in
   // opacity-only: stays on compositor thread
+  if (svPreviewWrap) svPreviewWrap.classList.add('loading');
   svBigImg.style.opacity = '0';
   requestAnimationFrame(() => {
     svBigImg.src = imgItems[i].src;
     svBigImg.alt = imgItems[i].label;
     svImgLabel.textContent = imgItems[i].label;
 
-    svBigImg.onload = () => { svBigImg.style.opacity = '1'; };
+    svBigImg.onload = () => {
+      if (svPreviewWrap) svPreviewWrap.classList.remove('loading');
+      svBigImg.style.opacity = '1';
+    };
+    svBigImg.onerror = () => {
+      if (svPreviewWrap) svPreviewWrap.classList.remove('loading');
+      svBigImg.style.opacity = '1';
+    };
     // Fallback if already cached (no load event fires)
-    if (svBigImg.complete) svBigImg.style.opacity = '1';
+    if (svBigImg.complete) {
+      if (svPreviewWrap) svPreviewWrap.classList.remove('loading');
+      svBigImg.style.opacity = '1';
+    }
   });
 
   // Update active thumb — update class only, no DOM rebuild
@@ -386,11 +432,12 @@ function buildVideoViewer() {
   animTabs.style.display = 'none';
 
   // Cache refs
-  svBigVideo = document.getElementById('sv-big-video');
-  svVidLabel = document.getElementById('sv-vid-label');
-  svVidLoops = document.getElementById('sv-vid-loops');
-  svVidHint  = document.getElementById('sv-unmute-hint');
-  svStripVid = document.getElementById('sv-strip-vid');
+  svBigVideo        = document.getElementById('sv-big-video');
+  svVidLabel        = document.getElementById('sv-vid-label');
+  svVidLoops        = document.getElementById('sv-vid-loops');
+  svVidHint         = document.getElementById('sv-unmute-hint');
+  svStripVid        = document.getElementById('sv-strip-vid');
+  svVideoPreviewWrap = viewer.querySelector('.sv-preview-wrap');
 
   // Build thumbs once with DocumentFragment
   const frag = document.createDocumentFragment();
@@ -425,6 +472,18 @@ function buildVideoViewer() {
       setVidIndex((vidIndex + 1) % allVids.length, false);
     }
   });
+
+  // Loading indicator for the big video preview
+  if (svVideoPreviewWrap) svVideoPreviewWrap.classList.add('loading');
+  svBigVideo.addEventListener('loadstart', () => {
+    if (svVideoPreviewWrap) svVideoPreviewWrap.classList.add('loading');
+  }, { passive: true });
+  svBigVideo.addEventListener('loadeddata', () => {
+    if (svVideoPreviewWrap) svVideoPreviewWrap.classList.remove('loading');
+  }, { passive: true });
+  svBigVideo.addEventListener('error', () => {
+    if (svVideoPreviewWrap) svVideoPreviewWrap.classList.remove('loading');
+  }, { passive: true });
 
   // Mute toggle — passive: click on video never prevents default
   svBigVideo.addEventListener('click', () => {
@@ -463,6 +522,7 @@ function setVidIndex(i, thumbScroll, metaOnly) {
 
   if (!metaOnly) {
     const wasMuted = svBigVideo.muted;
+    if (svVideoPreviewWrap) svVideoPreviewWrap.classList.add('loading');
     svBigVideo.src   = allVids[i].src;
     svBigVideo.muted = wasMuted;
     svBigVideo.load();

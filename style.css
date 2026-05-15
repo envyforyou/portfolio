@@ -619,6 +619,46 @@ img, video {
   isolation: isolate;
 }
 
+.gallery-img-wrap.loading,
+.anim-preview.loading,
+.sv-preview-wrap.loading {
+  position: relative;
+}
+
+.gallery-img-wrap.loading::before,
+.anim-preview.loading::before,
+.sv-preview-wrap.loading::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.gallery-img-wrap.loading::after,
+.anim-preview.loading::after,
+.sv-preview-wrap.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spinner 0.85s linear infinite;
+  pointer-events: none;
+}
+
+.gallery-img-wrap.loading img,
+.anim-preview.loading video,
+.sv-preview-wrap.loading img,
+.sv-preview-wrap.loading video {
+  opacity: 0.25;
+}
+
 .gallery-img-wrap img {
   width: 100%;
   height: 100%;
