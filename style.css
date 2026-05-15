@@ -42,10 +42,21 @@ body {
   font-size: 14px;
   line-height: 1.7;
   overflow-x: hidden;
-  cursor: crosshair;
+  cursor: default;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  -webkit-touch-callout: none;
   /* prevent subpixel layout shifts */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+img, video {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
 }
 
 /* SCANLINES OVERLAY */
@@ -325,7 +336,7 @@ body {
   letter-spacing: 1px;
   /* only transition box-shadow + color: compositor-friendly */
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  cursor: pointer;
+  cursor: crosshair;
   display: inline-block;
 }
 
@@ -368,7 +379,7 @@ body {
   position: relative;
   max-width: 360px;
   width: 100%;
-  cursor: pointer;
+  cursor: crosshair;
 }
 
 .deco-frame::before {
@@ -562,7 +573,7 @@ body {
   background: transparent;
   color: var(--gray);
   border: 1px solid var(--border);
-  cursor: pointer;
+  cursor: crosshair;
   letter-spacing: 1px;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
   /* Prevent layout shift from focus ring */
@@ -585,7 +596,7 @@ body {
 }
 
 .gallery-item {
-  cursor: pointer;
+  cursor: crosshair;
   /* use transform instead of margin/top for hover lift */
   transition: transform 0.2s;
   will-change: transform;
@@ -603,6 +614,7 @@ body {
   overflow: hidden;
   background: var(--bg-card);
   border: 1px solid var(--border);
+  cursor: crosshair;
   /* isolate so overlay opacity doesn't cause outer repaints */
   isolation: isolate;
 }
@@ -719,7 +731,7 @@ body {
   color: var(--gray);
   border: none;
   border-bottom: 2px solid transparent;
-  cursor: pointer;
+  cursor: crosshair;
   letter-spacing: 1px;
   transition: color 0.2s, border-bottom-color 0.2s;
   margin-bottom: -1px;
@@ -760,7 +772,7 @@ body {
   aspect-ratio: 16/9;
   background: var(--bg-dark);
   overflow: hidden;
-  cursor: pointer;
+  cursor: crosshair;
   contain: strict;
 }
 
@@ -769,8 +781,6 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  /* decode on separate thread */
-  decoding: async;
 }
 
 .anim-info {
@@ -803,7 +813,7 @@ body {
   contain: layout;
 }
 
-.collab-card { cursor: pointer; }
+.collab-card { cursor: crosshair; }
 .collab-card .gallery-img-wrap { aspect-ratio: 4/3; }
 
 /* ========== CONTACT ========== */
@@ -878,7 +888,7 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.92);
-  cursor: pointer;
+  cursor: crosshair;
 }
 
 .lightbox-content {
@@ -903,7 +913,7 @@ body {
   font-family: var(--font-pixel);
   font-size: 9px;
   color: var(--green);
-  cursor: pointer;
+  cursor: crosshair;
   letter-spacing: 2px;
 }
 
@@ -985,7 +995,7 @@ body {
   max-height: 520px;
   display: block;
   background: #000;
-  cursor: pointer;
+  cursor: crosshair;
 }
 
 .sv-img-label {
@@ -1012,7 +1022,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  cursor: pointer;
+  cursor: crosshair;
   transition: background 0.15s, color 0.15s;
   user-select: none;
   border: none;
@@ -1054,7 +1064,7 @@ body {
   width: 116px;
   height: 66px;
   flex-shrink: 0;
-  cursor: pointer;
+  cursor: crosshair;
   border: 2px solid transparent;
   overflow: hidden;
   background: var(--bg-dark);

@@ -67,8 +67,72 @@ function initSite() {
   initTypewriter();
   initFilter();
   initSteamViewer();
+  initLightbox();
+  initProtection();
   initScrollReveal();
   initDecoCycler();
+}
+
+
+// ── LIGHTBOX ZOOM FOR COLLAB IMAGES ─────────────────────────
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbLabel = document.getElementById('lb-label');
+const lbClose = document.getElementById('lb-close');
+const lbBg = document.getElementById('lb-bg');
+let previousBodyOverflow = '';
+
+function initLightbox() {
+  if (!lightbox || !lbImg) return;
+
+  const imageCards = document.querySelectorAll('.gallery-item, .collab-card');
+  imageCards.forEach(card => {
+    const img = card.querySelector('img');
+    const title = card.querySelector('.meta-title')?.textContent?.trim() || img?.alt || '';
+    const clickTarget = card.querySelector('.gallery-img-wrap') || card;
+    if (!img || !clickTarget) return;
+    clickTarget.addEventListener('click', () => openLightbox(img.src, title), { passive: true });
+  });
+
+  if (lbClose) lbClose.addEventListener('click', closeLightbox, { passive: true });
+  if (lbBg) lbBg.addEventListener('click', closeLightbox, { passive: true });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox && !lightbox.classList.contains('hidden')) {
+      closeLightbox();
+    }
+  }, { passive: true });
+}
+
+function initProtection() {
+  document.body.addEventListener('contextmenu', event => event.preventDefault(), { passive: false });
+  document.body.addEventListener('copy', event => event.preventDefault(), { passive: false });
+  document.body.addEventListener('cut', event => event.preventDefault(), { passive: false });
+  document.body.addEventListener('dragstart', event => {
+    if (event.target instanceof HTMLElement && /^(IMG|VIDEO)$/.test(event.target.tagName)) {
+      event.preventDefault();
+    }
+  }, { passive: false });
+
+  document.querySelectorAll('img, video').forEach(media => {
+    media.draggable = false;
+  });
+}
+
+function openLightbox(src, label) {
+  if (!lightbox || !lbImg) return;
+  previousBodyOverflow = document.body.style.overflow || '';
+  lbImg.src = src;
+  lbImg.alt = label || 'Collaboration image';
+  if (lbLabel) lbLabel.textContent = label;
+  lightbox.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  if (!lightbox) return;
+  lightbox.classList.add('hidden');
+  document.body.style.overflow = previousBodyOverflow;
 }
 
 
