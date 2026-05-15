@@ -1,50 +1,57 @@
-# 🖥️ Denya Sonata — Portfolio
+# Denya Sonata — Portfolio
 
 > *"A gamer who sometimes has the idea of making his imagination come to life through art and animation."*
 
-**Live site →** [envyforyou.github.io/portfolio](https://envyforyou.github.io/portfolio/)
+🌐 **Live site →** [envyforyou.github.io/portfolio](https://envyforyou.github.io/portfolio/)
 
 ---
 
-## About
+## about
 
-Personal portfolio of **Denya Sonata (envy)** — traditional & digital artist, animator, and developer based in Indonesia. Features a retro terminal / CRT boot-screen aesthetic built entirely with vanilla HTML, CSS, and JavaScript.
-
----
-
-## Features
-
-- **Boot sequence** — animated terminal startup screen with progress bar
-- **Illustrations gallery** — filterable by OC, Fanart, and Commission with lightbox viewer
-- **Animations showcase** — tabbed video gallery (Basic exercises & OC animations)
-- **Collaborations section** — collab works with friends
-- **Contact links** — Twitter/X, Instagram, TikTok, Email
-- **CRT scanline overlay** — because why not
+personal portfolio of **denya sonata (envy)** — traditional & digital artist, animator, and developer from Indonesia. features a retro terminal / CRT boot-screen aesthetic built entirely with vanilla HTML, CSS, and JavaScript.
 
 ---
 
-## Tech Stack
+## features
 
-| Layer | Technology |
-|-------|-----------|
-| Markup | HTML5 |
-| Styling | CSS3 |
-| Logic | Vanilla JavaScript |
-| Fonts | Press Start 2P, VT323, Share Tech Mono (Google Fonts) |
-| Hosting | GitHub Pages |
+- boot sequence — animated terminal startup with progress bar
+- illustrations gallery — filterable by OC, Fanart, Commission with lightbox viewer
+- animations showcase — tabbed video gallery (basics & OC animations)
+- collaborations section
+- contact links
 
 ---
 
-## Project Structure
+## built with
+
+| | |
+|---|---|
+| HTML5 | structure |
+| CSS3 | styling |
+| Vanilla JavaScript | gallery, filters, boot screen, typewriter |
+| Google Fonts | Press Start 2P, VT323, Share Tech Mono |
+| GitHub Pages | hosting |
+
+---
+
+## art tools
+
+- IbisPaint X
+- Clip Studio Paint
+- ToonBoom Harmony
+
+---
+
+## project structure
 
 ```
 portfolio/
-├── index.html          # Main page
-├── style.css           # All styling
+├── index.html
+├── style.css
 ├── js/
-│   └── main.js         # Gallery filter, animations, boot screen, typewriter
+│   └── main.js
 └── assets/
-    ├── hero/           # Profile images
+    ├── hero/
     └── works/
         ├── self/
         │   ├── drawings/
@@ -60,17 +67,9 @@ portfolio/
 
 ---
 
-## Art Tools Used
+## contact
 
-- IbisPaint X
-- Clip Studio Paint
-- ToonBoom Harmony
-
----
-
-## Contact
-
-| Platform | Link |
+| platform | link |
 |----------|------|
 | Twitter / X | [@denyasonata](https://x.com/denyasonata) |
 | Instagram | [@dhenyash](https://www.instagram.com/dhenyash) |
@@ -79,7 +78,16 @@ portfolio/
 
 ---
 
-## License
+## license
 
-Source code is licensed under [GPL-3.0](LICENSE).
-All artwork © Denya Sonata — do not repost without credit.
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
+
+all artwork, characters, and animations are original works by **denya sonata (envy)** and are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — you may not repost, modify, or use commercially without explicit permission.
+
+the site's source code is proprietary — available for reference only, not licensed for reuse.
+
+see [LICENSE](LICENSE) for full details.
+
+---
+
+> all art © denya sonata. do not repost without credit.
