@@ -157,6 +157,8 @@ function buildImageViewer() {
 
   const viewer = document.createElement('div');
   viewer.className = 'steam-viewer';
+  viewer.tabIndex = 0;
+  viewer.setAttribute('aria-label', 'image viewer');
   viewer.innerHTML = `
     <div class="sv-main">
       <button class="sv-prev sv-arrow" id="sv-prev-img" aria-label="Previous image">&#10094;</button>
@@ -238,6 +240,7 @@ function populateImageViewer() {
 
 // thumbScroll: whether to scroll the filmstrip to keep thumb visible
 function setImgIndex(i, thumbScroll) {
+  if (!imgItems.length || !svBigImg || !svStripImg) return;
   imgIndex = i;
 
   // Crossfade: fade out → swap src → fade in
@@ -293,6 +296,8 @@ function buildVideoViewer() {
 
   const viewer = document.createElement('div');
   viewer.className = 'steam-viewer';
+  viewer.tabIndex = 0;
+  viewer.setAttribute('aria-label', 'video viewer');
   viewer.innerHTML = `
     <div class="sv-main">
       <button class="sv-prev sv-arrow" id="sv-prev-vid" aria-label="Previous video">&#10094;</button>
@@ -388,6 +393,7 @@ function buildVideoViewer() {
 
 // metaOnly: update UI without touching video src (used for init before visible)
 function setVidIndex(i, thumbScroll, metaOnly) {
+  if (!allVids.length || !svBigVideo) return;
   vidIndex     = i;
   vidLoopCount = 0;
 
