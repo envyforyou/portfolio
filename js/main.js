@@ -78,21 +78,45 @@ function initSite() {
 // ── LIGHTBOX ZOOM FOR COLLAB IMAGES ─────────────────────────
 const lightbox = document.getElementById('lightbox');
 const lbImg = document.getElementById('lb-img');
+const lbVideo = document.getElementById('lb-video');
 const lbLabel = document.getElementById('lb-label');
 const lbClose = document.getElementById('lb-close');
 const lbBg = document.getElementById('lb-bg');
 let previousBodyOverflow = '';
 
 function initLightbox() {
-  if (!lightbox || !lbImg) return;
+  if (!lightbox || !lbImg || !lbVideo) return;
 
-  const imageCards = document.querySelectorAll('.gallery-item, .collab-card');
-  imageCards.forEach(card => {
-    const img = card.querySelector('img');
-    const title = card.querySelector('.meta-title')?.textContent?.trim() || img?.alt || '';
-    const clickTarget = card.querySelector('.gallery-img-wrap') || card;
-    if (!img || !clickTarget) return;
-    clickTarget.addEventListener('click', () => openLightbox(img.src, title), { passive: true });
+  document.querySelectorAll('.gallery-img-wrap').forEach(wrap => {
+    const img = wrap.querySelector('img');
+    const title = wrap.parentElement?.querySelector('.meta-title')?.textContent?.trim() || img?.alt || '';
+    if (!img) return;
+    wrap.addEventListener('click', () => openLightbox(img.src, title, 'image'), { passive: true });
+
+    if (!wrap.querySelector('.zoom-btn')) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'zoom-btn';
+      btn.setAttribute('aria-label', `Zoom ${title || 'image'}`);
+      btn.textContent = '🔍';
+      btn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        openLightbox(img.src, title, 'image');
+      }, { passive: true });
+      wrap.appendChild(btn);
+    }
+  });
+
+  document.querySelectorAll('.hero-img, .deco-inner img').forEach(img => {
+    const title = img.alt || 'Illustration';
+    img.addEventListener('click', () => openLightbox(img.src, title, 'image'), { passive: true });
+  });
+
+  document.querySelectorAll('.anim-preview').forEach(preview => {
+    const video = preview.querySelector('video');
+    if (!video) return;
+    const title = preview.closest('.anim-card')?.querySelector('.anim-title')?.textContent?.trim() || video.getAttribute('aria-label') || '';
+    preview.addEventListener('click', () => openLightbox(video.currentSrc || video.src, title, 'video'), { passive: true });
   });
 
   if (lbClose) lbClose.addEventListener('click', closeLightbox, { passive: true });
@@ -152,12 +176,28 @@ function initLoadingIndicators() {
   });
 }
 
-function openLightbox(src, label) {
-  if (!lightbox || !lbImg) return;
+function openLightbox(src, label, type = 'image') {
+  if (!lightbox || !lbImg || !lbVideo) return;
   previousBodyOverflow = document.body.style.overflow || '';
-  lbImg.src = src;
-  lbImg.alt = label || 'Collaboration image';
-  if (lbLabel) lbLabel.textContent = label;
+  lbLabel.textContent = label || '';
+
+  if (type === 'video') {
+    lbImg.classList.add('hidden');
+    lbVideo.classList.remove('hidden');
+    lbVideo.src = src;
+    lbVideo.currentTime = 0;
+    lbVideo.muted = true;
+    lbVideo.play().catch(() => {});
+  } else {
+    lbVideo.pause();
+    lbVideo.removeAttribute('src');
+    lbVideo.load();
+    lbVideo.classList.add('hidden');
+    lbImg.classList.remove('hidden');
+    lbImg.src = src;
+    lbImg.alt = label || 'Zoomed image';
+  }
+
   lightbox.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
@@ -165,6 +205,11 @@ function openLightbox(src, label) {
 function closeLightbox() {
   if (!lightbox) return;
   lightbox.classList.add('hidden');
+  lbVideo.pause();
+  if (lbVideo.src) {
+    lbVideo.removeAttribute('src');
+    lbVideo.load();
+  }
   document.body.style.overflow = previousBodyOverflow;
 }
 
@@ -262,6 +307,7 @@ function buildImageViewer() {
       <button class="sv-prev sv-arrow" id="sv-prev-img" aria-label="Previous image">&#10094;</button>
       <div class="sv-preview-wrap">
         <img class="sv-big-img" id="sv-big-img" src="" alt="" decoding="async" fetchpriority="low">
+        <button class="zoom-btn sv-zoom-btn" id="sv-zoom-img" type="button" aria-label="Zoom current image">🔍</button>
         <div class="sv-img-label" id="sv-img-label"></div>
       </div>
       <button class="sv-next sv-arrow" id="sv-next-img" aria-label="Next image">&#10095;</button>
@@ -290,6 +336,16 @@ function buildImageViewer() {
   document.getElementById('sv-next-img').addEventListener('click', () => {
     setImgIndex((imgIndex + 1) % imgItems.length, true);
   }, { passive: true });
+
+  const svZoomImgBtn = document.getElementById('sv-zoom-img');
+  if (svZoomImgBtn) {
+    svZoomImgBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (imgItems[imgIndex]) {
+        openLightbox(imgItems[imgIndex].src, imgItems[imgIndex].label, 'image');
+      }
+    }, { passive: true });
+  }
 
   // Keyboard nav when viewer is focused
   viewer.addEventListener('keydown', e => {
@@ -413,6 +469,7 @@ function buildVideoViewer() {
       <button class="sv-prev sv-arrow" id="sv-prev-vid" aria-label="Previous video">&#10094;</button>
       <div class="sv-preview-wrap">
         <video class="sv-big-video" id="sv-big-video" playsinline muted preload="none"></video>
+        <button class="zoom-btn sv-zoom-btn" id="sv-zoom-vid" type="button" aria-label="Zoom current video">🔍</button>
         <div class="sv-img-label"  id="sv-vid-label"></div>
         <div class="sv-vid-loops"  id="sv-vid-loops">LOOP 1/2</div>
         <div class="sv-unmute-hint" id="sv-unmute-hint">[ CLICK FOR SOUND ]</div>
@@ -461,6 +518,15 @@ function buildVideoViewer() {
   document.getElementById('sv-next-vid').addEventListener('click', () => {
     setVidIndex((vidIndex + 1) % allVids.length, true);
   }, { passive: true });
+
+  const svZoomVidBtn = document.getElementById('sv-zoom-vid');
+  if (svZoomVidBtn) {
+    svZoomVidBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const current = allVids[vidIndex];
+      if (current) openLightbox(current.src, current.label, 'video');
+    }, { passive: true });
+  }
 
   // Auto-advance after 2 loops
   svBigVideo.addEventListener('ended', () => {
