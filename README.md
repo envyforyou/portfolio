@@ -8,7 +8,7 @@
 
 ## about
 
-personal portfolio of **denya sonata (envy)** — traditional & digital artist, animator, and developer from Indonesia. features a retro terminal / CRT boot-screen aesthetic built entirely with vanilla HTML, CSS, and JavaScript.
+personal portfolio of **Denya Sonata (envy)** — traditional & digital artist, animator, and developer from Indonesia. features a retro terminal / CRT boot-screen aesthetic built entirely with vanilla HTML, CSS, and JavaScript.
 
 ---
 
@@ -82,7 +82,7 @@ portfolio/
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-all artwork, characters, and animations are original works by **denya sonata (envy)** and are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — you may not repost, modify, or use commercially without explicit permission.
+all artwork, characters, and animations are original works by **Denya Sonata (envy)** and are licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — you may not repost, modify, or use commercially without explicit permission.
 
 the site's source code is proprietary — available for reference only, not licensed for reuse.
 
@@ -90,4 +90,4 @@ see [LICENSE](LICENSE) for full details.
 
 ---
 
-> all art © denya sonata. do not repost without credit.
+> all art © Denya Sonata. do not repost without credit.
